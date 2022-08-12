@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const Contenedor = require('../enentregable-2')
+const Contenedor = require('../entrega-02/entregable-2')
 
-const productos  = new Contenedor('../productos.txt');
+const productos  = new Contenedor('../entrega-02/productos.txt');
 
 const PORT = 8080
 

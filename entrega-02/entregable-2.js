@@ -124,7 +124,7 @@ let object ={
 //productos.save(object); 
 
 
- setTimeout(async () => {console.log(await productos.getById(3))}, 100)
+// setTimeout(async () => {console.log(await productos.getById(3))}, 100)
 //setTimeout(async () => {console.log(await productos.getAll())}, 200)
 //setTimeout(async () => {await productos.deleteById(4)}, 800)
 
