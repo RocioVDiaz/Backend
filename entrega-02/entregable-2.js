@@ -25,7 +25,9 @@ class Contenedor {
                 if (error) {
                     console.log(error)
                 } else {
+                    console.log(objeto.id)
                     return objeto.id
+                   
                 }
             })
         }
@@ -104,6 +106,19 @@ class Contenedor {
             console.log('Error al borrar todos los elementos', err)
         }
     }
+    async updateOne(id,obj){
+        try {
+            let productos = await this.getAll()
+            let indice = await productos.findIndex((p => p.id == id));
+            productos[indice] = obj;
+            fs.promises.writeFile(this.nombreArchivo, JSON.stringify(productos))
+            return await productos
+        } catch (error) {
+            console.log('Error al modificar el elemento', error)  
+        }
+       
+        
+    }
 
 
 }
@@ -124,8 +139,9 @@ let object ={
 //productos.save(object); 
 
 
+
 // setTimeout(async () => {console.log(await productos.getById(3))}, 100)
-//setTimeout(async () => {console.log(await productos.getAll())}, 200)
+//setTimeout(async () => {console.log(await productos.updateOne(1,object))}, 200)
 //setTimeout(async () => {await productos.deleteById(4)}, 800)
 
 //productos.deleteAll()
