@@ -1,3 +1,28 @@
 <%- include('./partials/nav.ejs') %> 
 <h2>Lista de Productos</h2>
 
+<table>
+    <thead>
+        <tr></tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <% productos.forEach(p => { %>
+                <tr>
+                <th><%= p.id %> </th>    
+                <td><%= p.title %> </td>
+                <td><%= p.price %> </td>
+                <td><img width="100px" src="<%= p.thumbnail %> "></td>
+            </tr>
+            <% }) %>
+       
+    </tbody>
+</table>
+
+
+
