@@ -13,12 +13,14 @@ router.get('/mostrarProducto', async (req, res)=>{
 })
 
 router.get('/agregarProducto', (req, res)=>{
-    console.log("hola")
-    res.render('agregarProducto')
+        res.render('agregarProducto')
 })
-router.get ('detalle/:id', (req,res)=>{
-   let id = req.params.id;
+router.get ('/detalle/:id', (req,res)=>{
+    let id = req.params.id;
    let miProducto = listaProductos.filter(p=>p.id == id);
+   if(miProducto.length == 0){
+    return res.send(`no existe este producto`)
+   }
    res.send(miProducto) 
 })
 
