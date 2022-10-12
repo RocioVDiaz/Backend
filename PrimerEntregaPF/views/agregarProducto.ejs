@@ -25,22 +25,22 @@
           <div class="card" style="width: 18rem; margin:50px">
             <div class="card-body">
               <h5 class="card-title">Agregar Productos</h5>
-              <form class="w-100" onsubmit="return addProduct(this)">
+              <form class="w-100" action="/productos" method="POST">
                 <div class="mb-3">
                   <label class="form-label" for="title">Producto</label>
-                  <input class="form-control" type='text' id="title" required />
+                  <input class="form-control" type='text' id="title" name="title" required />
                 </div>
                 <div class="mb-3">
                   <label class="form-label" for="price">Precio</label>
-                  <input class="form-control" type='number' id="price" required />
+                  <input class="form-control" type='number' id="price" name="price" required />
                 </div>
 
                 <div class="mb-3">
                   <label class="form-label">URL Imagen</label>
-                  <input class="form-control" type='text' id="thumbnail" />
+                  <input class="form-control" type='text' id="thumbnail"  name="thumbnail" />
                 </div>
                 <div class="mb-3">
-                  <input class='btn btn-success' type='submit' value="Agregar producto" />
+                  <button class='btn btn-success' type='submit' >Agregar producto</button>
                 </div>
               </form>
             </div>

@@ -1,6 +1,6 @@
+<%- include('./partials/head.ejs') %>
 <%- include('./partials/nav.ejs') %> 
 <h2>Lista de Productos</h2>
-
 <table>
     <thead>
         <tr></tr>
@@ -12,7 +12,8 @@
     </thead>
     <tbody>
         
-            <% productos.forEach(p => { %>
+            <%  productos.forEach(p => {           
+                %>
                 <tr>
                 <th><%= p.id %> </th>    
                 <td><%= p.title %> </td>
@@ -23,6 +24,17 @@
        
     </tbody>
 </table>
+
+<div class="row my-5">
+    <h2 class="text-primary text-center">Centro de mensajes</h2>
+  <div>
+    <form onsubmit="return addMessage(this)">
+        <input type="text" id="username" placeholder="Acá tu email">
+        <div id="messages"></div>
+        <input type="text" id="texto" placeholder="Cuéntanos algo...">
+        <input class="btn btn-dark" type="submit" value="Enviar">
+    </form>
+  </div>
 
 
 

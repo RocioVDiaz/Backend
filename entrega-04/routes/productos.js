@@ -7,6 +7,7 @@ const productos  = new Contenedor('../entrega-02/productos.txt');
 
 /* GET users listing. */
 router.get('/', async (req, res) => {
+  console.log("HOLA")
    res.send( {data:JSON.stringify(await productos.getAll())})
 })
 router.get('/:id', async (req,res)=>{

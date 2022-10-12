@@ -1,6 +1,8 @@
 const app = require('./app.js')
 const PORT =  3000;
-const products = require('./src/contenedor')
+const Contenedor = require('./src/contenedor')
+
+const productos  = new Contenedor('./src/productos.txt');
 
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
@@ -37,24 +39,24 @@ server.on('error', (err) => {
     console.log(err);
 })
 
-io.on('connection', (socket) => {
+io.on('connection',async (socket) => {
     console.log('se conecto un cliente');
+    setTimeout(async () => {console.log(await productos.getAll())}, 800)
+    socket.emit('messages', { messages, products:  await productos.getAll() })
 
-    socket.emit('messages', { messages, products: products.getAll() })
-
-    socket.on('new-message', (data) => {
+    socket.on('new-message', async (data) => {
 
         messages = [...messages, data]
 
         console.log(messages);
-        let todo = { messages: messages, products: products.getAll() }
+        let todo = { messages: messages, products: await productos.getAll() }
         io.sockets.emit('messages', todo)
     })
-    socket.on('new-product', (data) => {
+    socket.on('new-product', async (data) => {
         console.log(data);
-        products.save(data);
-        console.log(products.getAll());
-        let todo = { messages: messages, products: products.getAll() }
+        productos.save(data);
+        console.log(productos.getAll());
+        let todo = { messages: messages, products: await productos.getAll() }
         io.sockets.emit('messages', todo)
     })
 })

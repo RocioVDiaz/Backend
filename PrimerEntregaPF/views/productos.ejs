@@ -1,0 +1,36 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %> 
+<h2>Lista de Productos</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+<%  productos.forEach(p => { %>
+  <div class="col" >
+    <div class="card h-100 p-5"  >
+        <img src="<%= p.thumbnail %>" class="card-img-top" alt="..." style = "height: 500px;">
+        <div class="card-body">
+          <h5 class="card-title"><%= p.title %></h5>
+          <p class="card-text"><%= p.price %></p>
+          <a href="/productos/detalle/<%= p.id %>" class="btn btn-primary">Go somewhere</a>
+          <a href="/:id/productos/<%= p.id %>" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+          
+            <% }) %>
+        </div>
+       
+
+
+<div class="row my-5">
+    <h2 class="text-primary text-center">Centro de mensajes</h2>
+  <div>
+    <form onsubmit="return addMessage(this)">
+        <input type="text" id="username" placeholder="Acá tu email">
+        <div id="messages"></div>
+        <input type="text" id="texto" placeholder="Cuéntanos algo...">
+        <input class="btn btn-dark" type="submit" value="Enviar">
+    </form>
+  </div>
+
+
+

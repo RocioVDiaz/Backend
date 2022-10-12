@@ -1,5 +1,9 @@
 const express = require('express')
 const router = express.Router();
+const products = require('../contenedor')
+const Contenedor = require('../contenedor')
+
+const productos  = new Contenedor('./src/productos.txt');
 
 let id = 3; 
 let listaProductos =[
@@ -8,7 +12,7 @@ let listaProductos =[
     {title:"Escuadra", price:123.45, thumbnail:"https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png", id:3}
 ]
 router.get('/mostrarProducto', async (req, res)=>{
-    res.render('productos', {productos: listaProductos})
+    res.render('productos', {productos: await productos.getAll()})
 
 })
 
@@ -17,7 +21,7 @@ router.get('/agregarProducto', (req, res)=>{
 })
 router.get ('/detalle/:id', (req,res)=>{
     let id = req.params.id;
-   let miProducto = listaProductos.filter(p=>p.id == id);
+   let miProducto = products.getAll().filter(p=>p.id == id);
    if(miProducto.length == 0){
     return res.send(`no existe este producto`)
    }
@@ -27,7 +31,7 @@ router.get ('/detalle/:id', (req,res)=>{
 router.post('/',(req, res)=>{
     let datos= req.body;
     datos.id=id++;
-    listaProductos=[...listaProductos,datos]
+    listaProductos=[...products.getAll(),datos]
     res.redirect('/productos/agregarProducto');
     
 
