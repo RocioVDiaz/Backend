@@ -11,18 +11,21 @@ const render=(data)=>{
     }).join(" ")
     document.getElementById("messages").innerHTML=html;
     console.log(data.products)
-    const ps = data.products.map((p)=>{
-        return(`<tr>
-            <th>${p.title}</th>
-            <td>${p.price}</td>
-            <td>
-              <div>
-                <img class="w-50" src=${p.thumbnail} alt='Product image' />
-              </div>
-            </td>
-          </tr>`)
-    }).join(" ")
-    document.getElementById("tbdy").innerHTML=ps
+    if(document.getElementById("tbdy")!= null){
+        const ps = data.products.map((p)=>{
+            return(`<tr>
+                <th>${p.title}</th>
+                <td>${p.price}</td>
+                <td>
+                  <div>
+                    <img class="w-50" src=${p.thumbnail} alt='Product image' />
+                  </div>
+                </td>
+              </tr>`)
+        }).join(" ")
+        document.getElementById("tbdy").innerHTML=ps
+    }
+   
 }
 const addMessage=(e)=>{
     let fecha = new Date().toLocaleDateString()+ ' ' +new Date().toTimeString()

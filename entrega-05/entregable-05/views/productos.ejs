@@ -25,16 +25,21 @@
     </tbody>
 </table>
 
-<div class="row my-5">
-    <h2 class="text-primary text-center">Centro de mensajes</h2>
-  <div>
-    <form onsubmit="return addMessage(this)">
-        <input type="text" id="username" placeholder="Acá tu email">
-        <div id="messages"></div>
-        <input type="text" id="texto" placeholder="Cuéntanos algo...">
-        <input class="btn btn-dark" type="submit" value="Enviar">
-    </form>
-  </div>
+<div class="col-sm-8">
+          <div class="card " style=" margin:50px">
+            <div class="card-header text-white bg-secondary">
+              <h5 class="card-title text-center">Centro de mensajes</h5>
+            </div>
+            <div class="card-body">
 
+              <form onsubmit="return addMessage(this)">
+                <input type="text" id="username" placeholder="Acá tu email">
+                <input type="text" id="texto" placeholder="Cuéntanos algo...">
+                <input class="btn btn-dark" type="submit" value="Enviar">
+                <div id="messages"></div>
+
+              </form>
+            </div>
+          </div>
 
 
